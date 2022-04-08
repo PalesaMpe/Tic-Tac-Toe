@@ -1,7 +1,6 @@
 import tic_tac_toe as game
 
 gameList = game.create_game()
-game.output_game(gameList)
 playerX = input("Enter player X name")
 playerO = input("Enter player O name")
 
@@ -42,14 +41,15 @@ while winner is None:
     if isTaken:
         index += 1
 
-    if game.check_tie(index):
-        winner = "tie"
+
     if game.check_horizontal_win(gameList) is not None:
         winner = game.check_horizontal_win(gameList)
     elif game.check_vertical_win(gameList) is not None:
         winner = game.check_vertical_win(gameList)
     elif game.check_diagonal_win(gameList) is not None:
         winner = game.check_diagonal_win(gameList)
+    elif game.check_tie(index) is not None:
+        winner = game.check_tie(index)
 
 print("----------------------")
 game.output_game(gameList)
@@ -57,5 +57,5 @@ if winner == 'X':
     print(playerX.upper() + " is the winner!")
 elif winner == 'O':
     print(playerO.upper() + " is the winner!")
-elif winner == "tie":
+elif winner == "Tie":
     print("There is no winner")
